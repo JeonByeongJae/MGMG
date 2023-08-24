@@ -1,0 +1,29 @@
+header {
+  background-color: #000;
+
+  .title {
+    margin: 0;
+    padding: 0 20px;
+    color: #fff;
+  }
+}
+
+.content {
+  .card_list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    .card_item {
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+      align-items: center;
+    }
+
+    .card_img {
+      width: 146px;
+      height: 204px;
+    }
+  }
+}
