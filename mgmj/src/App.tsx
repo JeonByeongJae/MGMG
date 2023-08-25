@@ -7,9 +7,15 @@ interface CardData {
   manaCost: string;
 }
 
+interface ImportedCardData {
+  name: string;
+  count: string;
+}
+
 function App(): JSX.Element {
   let xhr: XMLHttpRequest | null = null;
   const details = useRef<HTMLDivElement>(null);
+  const textareaDecklist = useRef<HTMLTextAreaElement>(null);
   const [cardData, setCardData] = useState<CardData[]>([]);
 
   const getXmlHttpRequestObject = () => {
@@ -40,9 +46,28 @@ function App(): JSX.Element {
         tempArr.push(el);
       });
       setCardData(tempArr);
-      console.log("ta-da!!!", jsonData, cardData);
     };
   }
+
+  const addList = () => {
+    let importedCardArr: ImportedCardData[] = [];
+
+    const decklist = textareaDecklist.current?.value;
+    const decklistArr = decklist?.split("\n");
+
+    decklistArr?.forEach((elem) => {
+      if (elem.indexOf("//") && elem.length !== 0) {
+        const nameRegExp = /([A-Za-z\'\,\s\//]+)\w+/;
+        const countRegExp = /([\d]+\s[A-za-z])\w+/;
+        const cardName = elem.match(nameRegExp)?.[0].substring(1) as string;
+        const cardCount = elem.match(countRegExp)?.[0].split(" ")[0] as string;
+
+        const tempCardItem = { name: cardName, count: cardCount };
+        importedCardArr.push(tempCardItem);
+      }
+    });
+    console.log(importedCardArr);
+  };
 
   useEffect(() => {
     console.log("useEffect", cardData);
@@ -54,12 +79,22 @@ function App(): JSX.Element {
         <h1 className="title">MGMJ</h1>
       </header>
       <div className="content">
-        <p>
+        <div className="get_data_area">
           결과
           <button className="btn_getdata" onClick={getDatas}>
             가져오기
           </button>
-        </p>
+        </div>
+        <div className="input_decklist_area">
+          <textarea
+            className="textarea_decklist"
+            placeholder="카드 리스트 복붙"
+            ref={textareaDecklist}
+          ></textarea>
+          <button className="btn_parse" onClick={addList}>
+            추가하기
+          </button>
+        </div>
         <div className="card_list" ref={details}>
           {cardData.map((item, index) => {
             return (
