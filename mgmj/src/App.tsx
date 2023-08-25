@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "./scss/base.scss";
 import "./App.scss";
 import { searchData, CardData } from "./api/SearchData";
 
@@ -45,6 +46,29 @@ export default function App(): JSX.Element {
         <h1 className="title">MGMG</h1>
       </header>
       <div className="content">
+        <ul role="tablist" className="search_tab_list_area">
+          <li className="search_tab_item">
+            <a
+              role="tab"
+              href="/"
+              className="btn_search_tab"
+              aria-selected="true"
+            >
+              카드 이름으로 추가
+            </a>
+          </li>
+          <li className="search_tab_item">
+            <a role="tab" href="/" className="btn_search_tab">
+              덱리로 추가
+            </a>
+          </li>
+          <li className="search_tab_item">
+            <a role="tab" href="/" className="btn_search_tab">
+              카드 코드로 추가
+            </a>
+          </li>
+        </ul>
+
         <div className="get_data_area">
           결과
           <button className="btn_getdata" onClick={searchSingleData}>

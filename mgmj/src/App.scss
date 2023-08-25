@@ -17,6 +17,54 @@ header {
   max-width: 1080px;
   margin: 0 auto;
 
+  .search_tab_list_area {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    border-bottom: 1px solid #e6e6e6;
+
+    .search_tab_item {
+      display: flex;
+    }
+
+    .search_tab_item + .search_tab_item {
+      &::before {
+        display: block;
+        width: 1px;
+        height: 20px;
+        margin: 15px 15px 0;
+        background-color: #e6e6e6;
+        content: "";
+      }
+    }
+
+    .btn_search_tab {
+      display: flex;
+      position: relative;
+      font-size: 16px;
+      line-height: 50px;
+      box-sizing: border-box;
+
+      &::after {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 2px;
+        background-color: #000;
+        content: "";
+      }
+
+      &[aria-selected="true"] {
+        font-weight: 700;
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
   .get_data_area {
     margin: 10px 0;
     .btn_getdata {

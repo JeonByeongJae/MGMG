@@ -22,3 +22,4 @@
 - 개발 내역
     - SearchData.tsx: 데이터 GET api 이동
     - server 폴더 일단 빼고 진행
+    - TabNav.tsx: 검색 유형에 따른 탭 
