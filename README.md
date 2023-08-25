@@ -20,4 +20,5 @@
 
 ### 23.08.25
 - 개발 내역
+    - SearchData.tsx: 데이터 GET api 이동
     - server 폴더 일단 빼고 진행

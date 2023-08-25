@@ -1,53 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.scss";
-
-interface CardData {
-  name: string;
-  imageUri: string;
-  manaCost: string;
-}
+import { searchData, CardData } from "./api/SearchData";
 
 interface ImportedCardData {
   name: string;
   count: string;
 }
 
-function App(): JSX.Element {
-  let xhr: XMLHttpRequest | null = null;
-  const details = useRef<HTMLDivElement>(null);
+export default function App(): JSX.Element {
   const textareaDecklist = useRef<HTMLTextAreaElement>(null);
   const [cardData, setCardData] = useState<CardData[]>([]);
 
-  const getXmlHttpRequestObject = () => {
-    if (!xhr) {
-      xhr = new XMLHttpRequest();
-    }
-    return xhr;
+  const searchSingleData = () => {
+    searchData().then((data) => {
+      setCardData(data);
+    });
   };
-
-  function dataCallback() {
-    if (xhr?.readyState === 4 && xhr?.status === 200) {
-      console.log("User data received!");
-    }
-  }
-
-  function getDatas() {
-    console.log("Get users...");
-    xhr = getXmlHttpRequestObject();
-    xhr.onreadystatechange = dataCallback;
-    xhr.open("GET", "http://localhost:5000/cards", true);
-    xhr.send(null);
-
-    xhr.onload = () => {
-      let tempArr: CardData[] = [];
-      const jsonData = JSON.parse(xhr?.response);
-
-      jsonData.forEach((el: CardData) => {
-        tempArr.push(el);
-      });
-      setCardData(tempArr);
-    };
-  }
 
   const addList = () => {
     let importedCardArr: ImportedCardData[] = [];
@@ -57,7 +25,7 @@ function App(): JSX.Element {
 
     decklistArr?.forEach((elem) => {
       if (elem.indexOf("//") && elem.length !== 0) {
-        const nameRegExp = /([A-Za-z\'\,\s\//]+)\w+/;
+        const nameRegExp = /([A-Za-z',\s//]+)\w+/;
         const countRegExp = /([\d]+\s[A-za-z])\w+/;
         const cardName = elem.match(nameRegExp)?.[0].substring(1) as string;
         const cardCount = elem.match(countRegExp)?.[0].split(" ")[0] as string;
@@ -69,19 +37,17 @@ function App(): JSX.Element {
     console.log(importedCardArr);
   };
 
-  useEffect(() => {
-    console.log("useEffect", cardData);
-  }, [cardData]);
+  useEffect(() => {}, [cardData]);
 
   return (
     <div className="wrap">
       <header className="header">
-        <h1 className="title">MGMJ</h1>
+        <h1 className="title">MGMG</h1>
       </header>
       <div className="content">
         <div className="get_data_area">
           결과
-          <button className="btn_getdata" onClick={getDatas}>
+          <button className="btn_getdata" onClick={searchSingleData}>
             가져오기
           </button>
         </div>
@@ -95,7 +61,7 @@ function App(): JSX.Element {
             추가하기
           </button>
         </div>
-        <div className="card_list" ref={details}>
+        <div className="card_list">
           {cardData.map((item, index) => {
             return (
               <div key={index} className="card_item">
@@ -113,5 +79,3 @@ function App(): JSX.Element {
     </div>
   );
 }
-
-export default App;
