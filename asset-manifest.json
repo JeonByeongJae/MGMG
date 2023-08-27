@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MGMG/static/css/main.b9afdd6e.css",
-    "main.js": "/MGMG/static/js/main.b1830e76.js",
+    "main.css": "/MGMG/static/css/main.cab96d09.css",
+    "main.js": "/MGMG/static/js/main.de9e849e.js",
     "index.html": "/MGMG/index.html",
-    "main.b9afdd6e.css.map": "/MGMG/static/css/main.b9afdd6e.css.map",
-    "main.b1830e76.js.map": "/MGMG/static/js/main.b1830e76.js.map"
+    "main.cab96d09.css.map": "/MGMG/static/css/main.cab96d09.css.map",
+    "main.de9e849e.js.map": "/MGMG/static/js/main.de9e849e.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9afdd6e.css",
-    "static/js/main.b1830e76.js"
+    "static/css/main.cab96d09.css",
+    "static/js/main.de9e849e.js"
   ]
 }
