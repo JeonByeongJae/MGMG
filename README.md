@@ -11,6 +11,12 @@
 ## Deploy
 - add - commit - push 후 `npm run deploy`
 
+## TODO
+- 카드 코드로 카드 가져오는 AddWithCode 페이지
+- 업데이트 순으로 나열하는 카드 리스트
+- Layout으로 wrap, Header, TabNav 분리
+- DB
+
 ## 진행상황
 ### 23.08.24
 - 환경설정
@@ -27,3 +33,10 @@
     - SearchData.tsx: 데이터 GET api 이동
     - server 폴더 일단 빼고 진행
     - TabNav.tsx: 검색 유형에 따른 탭 
+
+### 23.08.28
+- 개발 내역
+    - BrowserRouter 적용: 그 안에 `<Routes> > <Route path={}>` 로 라우팅 설정
+    - 라우팅 적용하면서 페이지 파일, components로 분리
+    - classnames/bind 로 모듈별 scss 적용
+ 
