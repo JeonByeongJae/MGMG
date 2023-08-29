@@ -1,11 +1,7 @@
-export interface CardData {
-  name: string;
-  imageUri: string;
-}
+import { CardListType } from "../components/decklist/CardList";
 
-export function searchData() {
+export function getCardDataWithName(name: string) {
   let xhr: XMLHttpRequest | null = null;
-  let tempArr: CardData[] = [];
 
   const getXmlHttpRequestObject = () => {
     if (!xhr) {
@@ -20,27 +16,21 @@ export function searchData() {
     }
   }
 
-  return new Promise<CardData[]>((resolve, reject) => {
+  return new Promise<CardListType>((resolve, reject) => {
     console.log("Get card...");
     xhr = getXmlHttpRequestObject();
     xhr.onreadystatechange = dataCallback;
-    xhr.open(
-      "GET",
-      "https://api.scryfall.com/cards/named?fuzzy=craterhoof",
-      true
-    );
+    xhr.open("GET", `https://api.scryfall.com/cards/named?exact=${name}`, true);
 
     xhr.onload = () => {
       if (xhr?.status === 200) {
         const jsonData = JSON.parse(xhr?.response);
-
-        let dummyItem: CardData = {
+        let dummyItem: CardListType = {
           name: jsonData.name,
           imageUri: jsonData.image_uris.small,
+          scryfallUri: jsonData.scryfall_uri,
         };
-
-        tempArr.push(dummyItem);
-        resolve(tempArr);
+        resolve(dummyItem);
       } else {
         console.log("ERROR with code:", xhr?.status);
       }
