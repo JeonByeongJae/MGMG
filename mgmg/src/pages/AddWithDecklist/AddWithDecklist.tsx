@@ -22,7 +22,7 @@ export const SearchAsDecklist = () => {
 
     decklistArr?.forEach((elem) => {
       if (elem.indexOf("//") && elem.length !== 0) {
-        const nameRegExp = /([A-Za-z',\s//]+)\w+/;
+        const nameRegExp = /([A-Za-z'\-,\s//]+)\w+/;
         const countRegExp = /([\d]+\s[A-za-z])\w+/;
         const cardName = elem.match(nameRegExp)?.[0].substring(1) as string;
         const cardCount = elem.match(countRegExp)?.[0].split(" ")[0] as string;
