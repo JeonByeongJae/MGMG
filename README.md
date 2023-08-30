@@ -39,4 +39,9 @@
     - BrowserRouter 적용: 그 안에 `<Routes> > <Route path={}>` 로 라우팅 설정
     - 라우팅 적용하면서 페이지 파일, components로 분리
     - classnames/bind 로 모듈별 scss 적용
- 
+
+### 23.08.30
+- 카드 리스트 개발
+
+### 23.08.31
+- favicon 변경
