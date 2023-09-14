@@ -1,4 +1,4 @@
-# MGMJ: card database of MGMJ 
+# MGMG: card database of MGMG
 카드 있는 거 등록해보자
 
 ## 필요 주요 기능
