@@ -12,20 +12,21 @@
 - add - commit - push 후 `npm run deploy`
 
 ## TODO
-- 카드 코드로 카드 가져오는 AddWithCode 페이지
+- CSV 형식으로 카드 가져오는 AddWithCSV 페이지
 - 업데이트 순으로 나열하는 카드 리스트
 - Layout으로 wrap, Header, TabNav 분리
 - DB
+- 커스텀 태그(본가에 있는 카드랑 여기 있는 카드 태그를 다르게 붙인다던가 하는식으로 자기 취향에 맞게 붙일 수 있게)
 
 ## 진행상황
 ### 23.08.24
 - 환경설정
-    - --python: api로 데이터 가져오기--
+    - -python: api로 데이터 가져오기-
     - TS+React: 데이터 표시 frontend
 
 - 개발 내역
-    - --app.py: localhost:5000 에서 data.json에 데이터 추가후 작성--
-    - --getData.py: scryfall api GET api--
+    - -app.py: localhost:5000 에서 data.json에 데이터 추가후 작성-
+    - -getData.py: scryfall api GET api-
     - App.tsx: ajax 로 localhost:5000/cards 에 GET 요청 후 데이터 표시
 
 ### 23.08.25

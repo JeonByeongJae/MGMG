@@ -18,12 +18,12 @@ const TabNav = () => {
     {
       name: "decklist",
       to: "/decklist",
-      text: "덱리로 추가",
+      text: "덱 리스트로 추가",
     },
     {
-      name: "code",
-      to: "/code",
-      text: "카드 코드로 추가",
+      name: "csv",
+      to: "/csv",
+      text: "CSV로 추가",
     },
   ];
 

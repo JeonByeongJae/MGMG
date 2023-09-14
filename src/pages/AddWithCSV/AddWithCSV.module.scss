@@ -1,17 +1,9 @@
-.input_decklist_area {
-  display: flex;
-  align-items: center;
-
-  .textarea_decklist {
-    width: 550px;
-    height: 220px;
-    padding: 3px;
-    border: 1px solid #000;
-    resize: none;
+.input_csv_area {
+  .input_csv {
+    display: none;
   }
 
-  .btn_parse {
-    margin-left: 40px;
+  .btn_add {
     padding: 16px 32px;
     font-size: 16px;
     color: #fff;

@@ -56,7 +56,7 @@ export const AddWithDecklist = () => {
             placeholder="카드 리스트 복붙"
             ref={textareaDecklist}
           ></textarea>
-          <button className={cx("btn_parse")} onClick={addList}>
+          <button className={cx("btn_add")} onClick={addList}>
             추가하기
           </button>
         </div>
